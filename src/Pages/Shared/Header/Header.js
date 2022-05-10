@@ -54,9 +54,33 @@ const Header = () => {
                                 <li className="nav-item">
                                     <Link
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
-                                        to="/inventory"
+                                        to="/"
                                     >
-                                        <span className="ml-2">Inventory</span>
+                                        <span className="ml-2">Appointment</span>
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link
+                                        className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+                                        to="/"
+                                    >
+                                        <span className="ml-2">Reviews</span>
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link
+                                        className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+                                        to="/"
+                                    >
+                                        <span className="ml-2">Contact us</span>
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link
+                                        className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+                                        to="/"
+                                    >
+                                        <span className="ml-2">Login</span>
                                     </Link>
                                 </li>
                             </ul>
