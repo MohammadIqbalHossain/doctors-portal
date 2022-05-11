@@ -25,7 +25,7 @@ const Header = () => {
                             >
                                 <AiOutlineMenu color="black" />
                             </button>
-                        </div>
+                        </div >
                         <div
                             className={
                                 "lg:flex flex-grow items-center" +
@@ -33,62 +33,62 @@ const Header = () => {
                             }
                             id="example-navbar-danger"
                         >
-                            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-                                <li className="nav-item">
+                            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto" >
+                                <li className="nav-item" >
                                     <Link
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
                                         to="/"
                                     >
-                                        <span className="ml-2">Home</span>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
+                                        <span className="ml-2" > Home</span >
+                                    </Link >
+                                </li >
+                                <li className="nav-item" >
                                     <Link
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
                                         to="/about"
                                     >
-                                        <span className="ml-2">About</span>
-                                    </Link>
-                                </li>
+                                        <span className="ml-2" > About</span >
+                                    </Link >
+                                </li >
 
-                                <li className="nav-item">
+                                <li className="nav-item" >
+                                    <Link
+                                        className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+                                        to="/main-appointment"
+                                    >
+                                        <span className="ml-2" > Appointment</span >
+                                    </Link >
+                                </li >
+                                <li className="nav-item" >
                                     <Link
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
                                         to="/"
                                     >
-                                        <span className="ml-2">Appointment</span>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
+                                        <span className="ml-2" > Reviews</span >
+                                    </Link >
+                                </li >
+                                <li className="nav-item" >
                                     <Link
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
                                         to="/"
                                     >
-                                        <span className="ml-2">Reviews</span>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
+                                        <span className="ml-2" > Contact us</span >
+                                    </Link >
+                                </li >
+                                <li className="nav-item" >
                                     <Link
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
                                         to="/"
                                     >
-                                        <span className="ml-2">Contact us</span>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link
-                                        className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
-                                        to="/"
-                                    >
-                                        <span className="ml-2">Login</span>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                                        <span className="ml-2" > Login</span >
+                                    </Link >
+                                </li >
+                            </ul >
+                        </div >
+                    </div >
+                </nav >
             </>
-        </div>
+        </div >
     );
 };
 
