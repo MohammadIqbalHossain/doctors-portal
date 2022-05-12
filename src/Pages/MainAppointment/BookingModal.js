@@ -33,12 +33,6 @@ const BookingModal = ({ selected, treatment, setTreatment}) => {
 
                         <input type="submit" value="Submit" class="btn btn-secondary w-full max-w-xs" />
                     </form>
-
-
-
-                    <div class="modal-action">
-                        <label for="booking-modal" class="btn">Yay!</label>
-                    </div>
                 </div>
             </div>
         </div>
