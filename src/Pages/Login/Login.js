@@ -1,12 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init'
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendEmailVerification, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import Spinner from '../Shared/Spinner/Spinner';
+import { useNavigation } from 'react-day-picker';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [email, setEmail] = useState();
+
+    const emailRef = useRef("");
+    console.log(emailRef)
 
     const [signInWithGoogle,
         googleUser,
@@ -19,44 +25,72 @@ const Login = () => {
         user,
         loading,
         error,
-      ] = useSignInWithEmailAndPassword(auth);
+    ] = useSignInWithEmailAndPassword(auth);
+
+    const [
+        sendPasswordResetEmail,
+        sending,
+        passResetError
+    ] = useSendPasswordResetEmail(auth);
 
 
-    if (googleUser) {
-        console.log(user)
+    const getEmail = (e) => {
+        const email = e.target.value;
+        console.log(email)
     }
 
+
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    let from = location.state?.from?.pathname || "/";
+
+
+    useEffect(() => {
+        if (googleUser || user) {
+            navigate(from, { replace: true });
+        }
+    }, [googleUser, user])
+
     let handleError;
-    if(error || googleError){
+    if (error || googleError) {
         handleError = <p className="text-red-500"><small>{error.message}</small></p>
     }
 
-
-
-    if(loading || googleLoading){
+    if (loading || googleLoading) {
         return <Spinner />
     }
 
     const onSubmit = data => {
-        console.log(data)
         signInWithEmailAndPassword(data.email, data.password)
     };
 
+    const handleEmailBlur = (event) => {
+        setEmail(event.target.value);
+        console.log(event.target.value);
+      };
+
+    const handleSendPassReset = async () => {
+        const email = emailRef.current;
+        console.log(email);
+        
+    }
 
     return (
         <div className="flex h-screen justify-center items-center">
-            <div class="card lg:max-w-lg  shadow-xl">
-                <div class="card-body ">
-                    <h2 class="text-center text-xl font-bold">Login</h2>
+            <div className="card lg:max-w-lg  shadow-xl">
+                <div className="card-body ">
+                    <h2 className="text-center text-xl font-bold">Login</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <label class="label">
-                            <span class="label-text">What is your Email?</span>
+                        <label className="label">
+                            <span className="label-text">What is your Email?</span>
                         </label>
                         <input
+                            onBlur={getEmail}
                             name="email"
                             type="email"
                             placeholder="Your Email"
-                            class="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full max-w-xs"
                             {...register("email", {
                                 required: {
                                     value: true,
@@ -69,20 +103,20 @@ const Login = () => {
                             })}
                         />
 
-                        <label class="label">
-                            {errors.email?.type === 'required' && <span class="label-text-alt text-red-500">{errors.email.message}</span>}
+                        <label className="label">
+                            {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
 
-                            {errors.email?.type === 'pattern' && <span class="label-text-alt text-red-500">{errors.email.message}</span>}
+                            {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                         </label>
 
-                        <label class="label">
-                            <span class="label-text">Password?</span>
+                        <label className="label">
+                            <span className="label-text">Password?</span>
                         </label>
                         <input
                             name="password"
                             type="password"
                             placeholder="Password"
-                            class="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full max-w-xs"
                             {...register("password", {
                                 required: {
                                     value: true,
@@ -95,10 +129,10 @@ const Login = () => {
                             })}
                         />
 
-                        <label class="label">
-                            {errors.password?.type === 'required' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
+                        <label className="label">
+                            {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
 
-                            {errors.password?.type === 'minLength' && <span class="label-text-alt text-red-500">{errors.password.message}</span>}
+                            {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                         </label>
                         {handleError}
                         <input
@@ -114,8 +148,14 @@ const Login = () => {
                         </span>
                     </p>
 
-                    <div class="flex flex-col w-full border-opacity-50">
-                        <div class="divider">OR</div>
+                    <p>Forget Password
+                        <span className="text-secondary ml-2">
+                            <span>Reset password</span>
+                        </span>
+                    </p>
+
+                    <div className="flex flex-col w-full border-opacity-50">
+                        <div className="divider">OR</div>
                     </div>
                     <div>
                         <button

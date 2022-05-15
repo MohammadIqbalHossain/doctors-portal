@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
 
     const [navbarOpen, setNavbarOpen] = useState(false);
+
+    const [user, loading] = useAuthState(auth);
 
     return (
         <div>
@@ -33,7 +38,7 @@ const Header = () => {
                             }
                             id="example-navbar-danger"
                         >
-                            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto" >
+                            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto lg:items-center" >
                                 <li className="nav-item" >
                                     <Link
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
@@ -68,6 +73,14 @@ const Header = () => {
                                     </Link >
                                 </li >
                                 <li className="nav-item" >
+                                    {user && <Link
+                                        className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
+                                        to="/dashboard"
+                                    >
+                                        <span className="ml-2" > Dashboard</span >
+                                    </Link >}
+                                </li >
+                                <li className="nav-item" >
                                     <Link
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
                                         to="/"
@@ -76,14 +89,26 @@ const Header = () => {
                                     </Link >
                                 </li >
                                 <li className="nav-item" >
-                                    <Link
+                                    {user ? <button onClick={() => signOut(auth)} className="btn btn-primary">Sign Out</button> : <Link
                                         className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug hover:opacity-75"
                                         to="/login"
                                     >
                                         <span className="ml-2" > Login</span >
-                                    </Link >
-                                </li >
+                                    </Link >}
+                                </li>
+                                {user && <button
+                                    className="text-white cursor-pointer text-xl leading-none px-1 py-1 border border-solid border-transparent rounded block lg:hidden outline-none focus:outline-none"
+                                    type="button"
+                                   
+                                >
+                                    
+                                    <label for="my-drawer-2" >
+                                    <AiOutlineMenu color="#0FCFEC" />
+                                    </label>
+                                </button>}
+                                
                             </ul >
+                           
                         </div >
                     </div >
                 </nav >
