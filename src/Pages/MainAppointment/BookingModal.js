@@ -24,7 +24,7 @@ const BookingModal = ({ selected, treatment, setTreatment, refetch }) => {
             phone: e.target.phone.value,
         }
 
-        fetch(`http://localhost:5000/booking`, {
+        fetch(`https://intense-fortress-15788.herokuapp.com/booking`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -34,10 +34,10 @@ const BookingModal = ({ selected, treatment, setTreatment, refetch }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if(data.success){
-                   toast(`Your appointment is set on ${formatedDate}, at ${slot}`)
-                } 
-                else{
+                if (data.success) {
+                    toast(`Your appointment is set on ${formatedDate}, at ${slot}`)
+                }
+                else {
                     toast.error(`You already have an appointment on ${data?.booking?.date} ${data.booking?.slot}`);
                 }
                 refetch()

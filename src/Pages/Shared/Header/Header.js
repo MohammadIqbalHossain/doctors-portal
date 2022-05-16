@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
@@ -10,7 +10,8 @@ const Header = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
 
     const [user, loading] = useAuthState(auth);
-
+    const { pathname } = useLocation();
+   
     return (
         <div>
             <>
@@ -96,21 +97,23 @@ const Header = () => {
                                         <span className="ml-2" > Login</span >
                                     </Link >}
                                 </li>
-                                {user && <button
-                                    className="text-white cursor-pointer text-xl leading-none px-1 py-1 border border-solid border-transparent rounded block lg:hidden outline-none focus:outline-none"
-                                    type="button"
-                                   
-                                >
-                                    
-                                    <label for="my-drawer-2" >
-                                    <AiOutlineMenu color="#0FCFEC" />
-                                    </label>
-                                </button>}
-                                
+
+
                             </ul >
-                           
+
                         </div >
+
                     </div >
+                    {pathname === '/dashboard' && <button
+                        className="text-white cursor-pointer text-xl leading-none px-1 py-1 border border-solid border-transparent rounded block lg:hidden outline-none focus:outline-none"
+                        type="button"
+
+                    >
+
+                        <label for="my-drawer-2" >
+                            <AiOutlineMenu color="#0FCFEC" />
+                        </label>
+                    </button>}
                 </nav >
             </>
         </div >

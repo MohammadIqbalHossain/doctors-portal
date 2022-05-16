@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfil
 import { useForm } from "react-hook-form";
 import Spinner from '../Shared/Spinner/Spinner';
 import { useNavigation } from 'react-day-picker';
+import useToken from '../../hooks/useToken';
 
 
 const Signup = () => {
@@ -32,7 +33,7 @@ const Signup = () => {
     const navigate = useNavigate();
 
    
-
+   const [token] = useToken(user || googleError);
 
 
     let handleError;
@@ -52,11 +53,11 @@ const Signup = () => {
         await createUserWithEmailAndPassword(data.email, data.password)
         await updateProfile({ displayName: data.name })
         console.log("updated");
-        navigate('/main-appointment')
+        
     };
 
-    if (googleUser || user) {
-        console.log(user)
+    if (token) {
+        navigate('/main-appointment')
     }
 
     return (

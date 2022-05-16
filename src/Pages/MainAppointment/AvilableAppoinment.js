@@ -11,9 +11,9 @@ const AvilableAppoinment = ({ selected }) => {
 
     const formatedDate = format(selected, "PP");
 
-  
-    const { isLoading, error, data: bookings , refetch} = useQuery(["available", formatedDate], () =>
-        fetch(`http://localhost:5000/available?date=${formatedDate}`)
+
+    const { isLoading, error, data: bookings, refetch } = useQuery(["available", formatedDate], () =>
+        fetch(`https://intense-fortress-15788.herokuapp.com/available?date=${formatedDate}`)
             .then(res => res.json()))
 
     if (isLoading) {
@@ -28,12 +28,12 @@ const AvilableAppoinment = ({ selected }) => {
                     bookings?.map(booking => <AppointmnetCart
                         key={booking._id}
                         bookings={booking}
-                     
+
                         setTreatment={setTreatment}
                     />)
                 }
             </div>
-            {treatment && <BookingModal setTreatment={setTreatment} selected={selected} treatment={treatment}    refetch={refetch}/>}
+            {treatment && <BookingModal setTreatment={setTreatment} selected={selected} treatment={treatment} refetch={refetch} />}
         </div>
     );
 };

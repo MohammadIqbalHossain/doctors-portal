@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import Spinner from '../Shared/Spinner/Spinner';
 import { useNavigation } from 'react-day-picker';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -44,13 +45,14 @@ const Login = () => {
     const location = useLocation()
 
     let from = location.state?.from?.pathname || "/";
-
+   
+    const [token] = useToken(user || googleUser)
 
     useEffect(() => {
         if (googleUser || user) {
             navigate(from, { replace: true });
         }
-    }, [googleUser, user])
+    }, [token]);
 
     let handleError;
     if (error || googleError) {
