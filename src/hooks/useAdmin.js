@@ -5,7 +5,7 @@ const useAdmin = user => {
     const [adminLoading, setAdminLoading] = useState(true)
     useEffect(() => {
         const email = user?.email;
-        console.log(email);
+    
         if (email) {
             fetch(`https://intense-fortress-15788.herokuapp.com/admin/${email}`, {
                 method: "GET",
@@ -16,7 +16,7 @@ const useAdmin = user => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data.admin);
+                   
                     setAdmin(data.admin);
                     setAdminLoading(false)
                 })

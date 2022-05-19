@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const MyAppointment = () => {
 
@@ -35,8 +35,8 @@ const MyAppointment = () => {
     return (
         <div>
             <h1>My Appointment {appointments.length}</h1>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
 
                     <thead>
                         <tr>
@@ -45,6 +45,7 @@ const MyAppointment = () => {
                             <th>Date</th>
                             <th>Treatment</th>
                             <th>Time</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,6 +57,15 @@ const MyAppointment = () => {
                                 <td>{a.date}</td>
                                 <td>{a.treatment}</td>
                                 <td>{a.slot}</td>
+                                <td>
+                                    {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}> <button className="btn btn-success">Pay</button> </Link>}
+
+                                    {(a.price && a.paid) &&  <div>
+                                        <p className=" text-success">Paid</p>
+                                        <p><small>{a.transactionId}</small></p>
+                                        
+                                        </div>}
+                                </td>
                             </tr>)
                         }
                     </tbody>

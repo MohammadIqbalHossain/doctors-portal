@@ -12,8 +12,6 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [email, setEmail] = useState();
 
-    const emailRef = useRef("");
-    console.log(emailRef)
 
     const [signInWithGoogle,
         googleUser,
@@ -73,8 +71,6 @@ const Login = () => {
       };
 
     const handleSendPassReset = async () => {
-        const email = emailRef.current;
-        console.log(email);
         
     }
 

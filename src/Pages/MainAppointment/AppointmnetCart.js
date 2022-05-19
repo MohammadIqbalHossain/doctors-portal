@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AppointmnetCart = ({ bookings, setTreatment }) => {
-    const { name, slots } = bookings;
+    const { name, slots, price } = bookings;
 
     return (
         <div className="card lg;max-w-lg bg-base-100 shadow-xl">
@@ -13,6 +13,7 @@ const AppointmnetCart = ({ bookings, setTreatment }) => {
                     }
                 </p>
                 <p className="text-center">{slots.length} {slots.length > 1 ? "spaces" : "space"} avilable</p>
+                <p className="text-center">Price: ${price}</p>
                 <div className="card-actions justify-center">
                     <label
                         htmlFor="booking-modal"
