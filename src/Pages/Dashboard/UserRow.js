@@ -5,7 +5,7 @@ const UserRow = ({ user, refetch }) => {
     const { email, role } = user;
 
     const makeAdmin = () => {
-        fetch(`https://intense-fortress-15788.herokuapp.com/users/admin/${email}`, {
+        fetch(`https://doctors-portal-server-iota-gray.vercel.app/users/admin/${email}`, {
             method: "PUT",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`

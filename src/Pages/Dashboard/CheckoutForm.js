@@ -17,7 +17,7 @@ const CheckoutForm = ({ appointment }) => {
 
 
     useEffect(() => {
-        fetch(`https://intense-fortress-15788.herokuapp.com/create-payment-intent`, {
+        fetch(`https://doctors-portal-server-iota-gray.vercel.app/create-payment-intent`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -38,7 +38,7 @@ const CheckoutForm = ({ appointment }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (!stripe || !elements) {
+        if (!stripe || !elements || success) {
             return;
         }
 
@@ -87,7 +87,7 @@ const CheckoutForm = ({ appointment }) => {
             console.log(paymentIntent);
             setSuccess("Congrats, Your payment is successfull");
 
-            fetch(`https://intense-fortress-15788.herokuapp.com/booking/${_id}`, {
+            fetch(`https://doctors-portal-server-iota-gray.vercel.app/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

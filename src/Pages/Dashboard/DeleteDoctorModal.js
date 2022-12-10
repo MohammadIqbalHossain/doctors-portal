@@ -6,7 +6,7 @@ const DeleteDoctorModal = ({ doctor, refetch }) => {
   const { name, email } = doctor;
 
   const deleteDoctor = () => {
-    fetch(`https://intense-fortress-15788.herokuapp.com/doctor/${email}`, {
+    fetch(`https://doctors-portal-server-iota-gray.vercel.app/doctor/${email}`, {
       method: "DELETE",
       authorization: `bearer ${localStorage.getItem('accessToken')}`
     })

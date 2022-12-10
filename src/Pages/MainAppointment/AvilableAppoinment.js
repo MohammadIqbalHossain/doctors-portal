@@ -13,7 +13,7 @@ const AvilableAppoinment = ({ selected }) => {
 
 
     const { isLoading, error, data: bookings, refetch } = useQuery(["available", formatedDate], () =>
-        fetch(`https://intense-fortress-15788.herokuapp.com/available?date=${formatedDate}`)
+        fetch(`https://doctors-portal-server-iota-gray.vercel.app/available?date=${formatedDate}`)
             .then(res => res.json()))
 
     if (isLoading) {

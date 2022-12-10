@@ -12,7 +12,7 @@ const MyAppointment = () => {
     const navigate = useNavigate();
     useEffect(() => {
         if (user) {
-            fetch(`https://intense-fortress-15788.herokuapp.com/booking?patient=${user?.email}`, {
+            fetch(`https://doctors-portal-server-iota-gray.vercel.app/booking?patient=${user?.email}`, {
                 method: 'GET',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -60,11 +60,11 @@ const MyAppointment = () => {
                                 <td>
                                     {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}> <button className="btn btn-success">Pay</button> </Link>}
 
-                                    {(a.price && a.paid) &&  <div>
+                                    {(a.price && a.paid) && <div>
                                         <p className=" text-success">Paid</p>
                                         <p><small>{a.transactionId}</small></p>
-                                        
-                                        </div>}
+
+                                    </div>}
                                 </td>
                             </tr>)
                         }

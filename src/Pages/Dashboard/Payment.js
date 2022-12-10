@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L14yAFnm89k40kTV81n5y1mxhYzTDPoLJFDl
 
 const Payment = () => {
     const { id } = useParams();
-    const url = `https://intense-fortress-15788.herokuapp.com/booking/${id}`;
+    const url = `https://doctors-portal-server-iota-gray.vercel.app/booking/${id}`;
     const { data: appointment, isLoading } = useQuery(["bookings", id], () => fetch(url).then(res => res.json()))
 
     if (isLoading) {

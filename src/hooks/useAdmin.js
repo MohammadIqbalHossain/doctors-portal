@@ -5,9 +5,9 @@ const useAdmin = user => {
     const [adminLoading, setAdminLoading] = useState(true)
     useEffect(() => {
         const email = user?.email;
-    
+
         if (email) {
-            fetch(`https://intense-fortress-15788.herokuapp.com/admin/${email}`, {
+            fetch(`https://doctors-portal-server-iota-gray.vercel.app/admin/${email}`, {
                 method: "GET",
                 headers: {
                     'content-type': 'application/json',
@@ -16,7 +16,7 @@ const useAdmin = user => {
             })
                 .then(res => res.json())
                 .then(data => {
-                   
+
                     setAdmin(data.admin);
                     setAdminLoading(false)
                 })

@@ -25,7 +25,7 @@ const BookingModal = ({ selected, treatment, setTreatment, refetch }) => {
             phone: e.target.phone.value,
         }
 
-        fetch(`https://intense-fortress-15788.herokuapp.com/booking`, {
+        fetch(`https://doctors-portal-server-iota-gray.vercel.app/booking`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

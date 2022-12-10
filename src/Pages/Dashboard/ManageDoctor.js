@@ -9,7 +9,7 @@ const ManageDoctor = () => {
 
 
   const { data: doctors, isLoading, refetch } =
-    useQuery("doctor", () => fetch('https://intense-fortress-15788.herokuapp.com/doctor')
+    useQuery("doctor", () => fetch('https://doctors-portal-server-iota-gray.vercel.app/doctor')
       .then(res => res.json()))
 
   if (isLoading) {
