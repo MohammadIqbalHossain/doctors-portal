@@ -10,7 +10,7 @@ const AddDoctor = () => {
 
     const imageStorageKey = "a0bb5a19dfe4424e4c9e0b1c70fb6026";
 
-    const { data: services, isLoading } = useQuery("services", () => fetch("https://doctors-portal-server-iota-gray.vercel.app/service").then(res => res.json()))
+    const { data: services, isLoading } = useQuery("services", () => fetch("https://doctors-portal-server-site.up.railway.app/service").then(res => res.json()))
 
     if (isLoading) {
         return <Spinner />
@@ -39,7 +39,7 @@ const AddDoctor = () => {
                         img: img
                     }
                     //sent data to the server.
-                    fetch('https://doctors-portal-server-iota-gray.vercel.app/doctor', {
+                    fetch('https://doctors-portal-server-site.up.railway.app/doctor', {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",

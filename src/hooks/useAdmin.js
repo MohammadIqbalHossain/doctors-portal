@@ -7,7 +7,7 @@ const useAdmin = user => {
         const email = user?.email;
 
         if (email) {
-            fetch(`https://doctors-portal-server-iota-gray.vercel.app/admin/${email}`, {
+            fetch(`https://doctors-portal-server-site.up.railway.app/admin/${email}`, {
                 method: "GET",
                 headers: {
                     'content-type': 'application/json',

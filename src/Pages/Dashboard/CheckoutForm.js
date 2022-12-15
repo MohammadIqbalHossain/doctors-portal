@@ -17,7 +17,7 @@ const CheckoutForm = ({ appointment }) => {
 
 
     useEffect(() => {
-        fetch(`https://doctors-portal-server-iota-gray.vercel.app/create-payment-intent`, {
+        fetch(`https://doctors-portal-server-site.up.railway.app/create-payment-intent`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -87,7 +87,7 @@ const CheckoutForm = ({ appointment }) => {
             console.log(paymentIntent);
             setSuccess("Congrats, Your payment is successfull");
 
-            fetch(`https://doctors-portal-server-iota-gray.vercel.app/booking/${_id}`, {
+            fetch(`https://doctors-portal-server-site.up.railway.app/booking/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

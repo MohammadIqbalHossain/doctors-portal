@@ -25,7 +25,7 @@ const BookingModal = ({ selected, treatment, setTreatment, refetch }) => {
             phone: e.target.phone.value,
         }
 
-        fetch(`https://doctors-portal-server-iota-gray.vercel.app/booking`, {
+        fetch(`https://doctors-portal-server-site.up.railway.app/booking`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

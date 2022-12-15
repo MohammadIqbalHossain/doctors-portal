@@ -12,7 +12,7 @@ const MyAppointment = () => {
     const navigate = useNavigate();
     useEffect(() => {
         if (user) {
-            fetch(`https://doctors-portal-server-iota-gray.vercel.app/booking?patient=${user?.email}`, {
+            fetch(`https://doctors-portal-server-site.up.railway.app/booking?patient=${user?.email}`, {
                 method: 'GET',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`

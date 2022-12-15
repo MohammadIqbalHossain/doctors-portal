@@ -5,7 +5,7 @@ import UserRow from './UserRow';
 
 const AllUsers = () => {
 
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://doctors-portal-server-iota-gray.vercel.app/users', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://doctors-portal-server-site.up.railway.app/users', {
         method: "GET",
         headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`
